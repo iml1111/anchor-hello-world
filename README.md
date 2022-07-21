@@ -6,6 +6,9 @@ anchor-hello-world
 ## Deploy
 check the `Anchor.toml`.
 ```
+# get dynamic keypair
+$ solana address -k ./target/deploy/keypair.json
+# deploy it
 $ anchor deploy
 
 # Second Shell
@@ -16,3 +19,8 @@ $ solana-test-validator
 ```
 $ anchor test
 ```
+
+# Deployments(devnet)
+
+## incrementers
+- GUDKwDnbiJqEbBATk4bALewDCGNdqqiN49ddFkk7HPHU

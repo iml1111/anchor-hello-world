@@ -2,13 +2,13 @@
 seeds = false
 skip-lint = false
 [programs.localnet]
-incrementer = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
+incrementer = "GUDKwDnbiJqEbBATk4bALewDCGNdqqiN49ddFkk7HPHU"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "localnet"
+cluster = "devnet"
 wallet = "/home/iml1111/.config/solana/id.json"
 
 [scripts]
