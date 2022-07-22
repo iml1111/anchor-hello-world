@@ -15,9 +15,13 @@ IML2 = [153,31,111,247,54,72,131,173,86,83,147,99,149,19,193,34,33,168,163,54,12
 
 
 def create_acc():
+    """
+    방금 만들어낸 base_acc에 대하여 user_acc가 일정 수수료를 지불하고,
+    정식으로 BaseAccount으로 등록하게 됨.
+    """
 
     user_acc = Keypair.from_secret_key(IML2)
-    # base acc는 그냥 아무렇게나 만들어도 되려나?
+    # base acc는 그냥 아무렇게나 만들면됨.
     base_acc = Keypair()
 
     ix = create({
