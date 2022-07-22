@@ -2,7 +2,7 @@
 seeds = false
 skip-lint = false
 [programs.localnet]
-incrementer = "GUDKwDnbiJqEbBATk4bALewDCGNdqqiN49ddFkk7HPHU"
+incrementer = "9UTBXFVBZcApvmJmxWtwKUHZZ6eEQc4mXRWv5NQ1DuYg"
 
 [registry]
 url = "https://api.apr.dev"
