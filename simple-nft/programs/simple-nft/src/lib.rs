@@ -72,7 +72,7 @@ pub mod simple_nft {
                 symbol,
                 uri,
                 Some(creator),
-                1,  // seller_fee_basis_points
+                1,  // seller_fee_basis_points: 팔때마다 수수료가 이동함
                 true, // update_authority_is_signer
                 false, // is_mutable
                 None, // collection

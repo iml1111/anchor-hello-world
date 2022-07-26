@@ -116,3 +116,17 @@ $ solana-test-validator
 }
 
 ```
+
+## simple-nft
+- 4jvMtVYUSyWoVvaxwAnWzSNdqaZHJArKG3zyFQGZjuty
+
+### INFO
+```
+# Token 1
+mint: Gsqwt9tfYDBix9kq7Uqq4hMREwxb83SjN8Js9H3469rp (IML token)
+user_account: CqeESEVSgUbjjTw1TLbBq8ZWq5AZy6aE62FPAS4UZC6d (iml2)
+token_account: 8nhf5o82VQo1NSxj6QjUenS72mnGEG7QotrxvzEpeovT (iml2' token account)
+
+```
+
+### IDL

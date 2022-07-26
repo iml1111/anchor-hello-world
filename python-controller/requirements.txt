@@ -5,3 +5,4 @@ typer
 IPython
 black
 autoflake
+base58
