@@ -1,6 +1,5 @@
 
 import asyncio
-from anchorpy import Provider
 from anchorpy import Provider, Wallet
 from solana.keypair import Keypair
 from solana.publickey import PublicKey

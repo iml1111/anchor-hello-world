@@ -5,6 +5,10 @@ anchor-hello-world
 
 # Get Started
 
+## Key Path
+```
+Windows WSL: /home/iml1111/.config/solana/id.json
+```
 
 
 ## Deploy
