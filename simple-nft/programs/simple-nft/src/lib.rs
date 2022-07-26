@@ -4,7 +4,7 @@ use anchor_spl::token;
 use anchor_spl::token::{MintTo, Token};
 use mpl_token_metadata::instruction::{create_master_edition_v3, create_metadata_accounts_v2};
 
-declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");
+declare_id!("4jvMtVYUSyWoVvaxwAnWzSNdqaZHJArKG3zyFQGZjuty");
 
 #[program]
 pub mod simple_nft {
@@ -21,11 +21,11 @@ pub mod simple_nft {
         // SPL Token Mint 과정
         msg!("Initializing Mint NFT");
         let cpi_accounts = MintTo {
-            mint: _ctx.accounts.mint.to_account_info(),
+            mint: _ctx.accounts.mint.to_account_info(), // what is this ??
             to: _ctx.accounts.token_account.to_account_info(),
-            authority: _ctx.payer.to_account_info(),
+            authority: _ctx.accounts.payer.to_account_info(),
         };
-        msg!("CPI(Token Program) Account Assigned")
+        msg!("CPI(Token Program) Account Assigned");
         let cpi_program = _ctx.accounts.token_program.to_account_info();
         msg!("Token Program Assigned");
         let cpi_ctx = CpiContext::new(cpi_program, cpi_accounts);
@@ -34,7 +34,17 @@ pub mod simple_nft {
         msg!("Token Minted !!!");
 
         // Token Metadata 삽입 과정
-        msg!("Account Info Assgined")
+        let account_info = vec![
+            _ctx.accounts.metadata.to_account_info(),
+            _ctx.accounts.mint.to_account_info(),
+            _ctx.accounts.mint_authority.to_account_info(),
+            _ctx.accounts.payer.to_account_info(),
+            _ctx.accounts.token_metadata_program.to_account_info(),
+            _ctx.accounts.token_program.to_account_info(),
+            _ctx.accounts.system_program.to_account_info(),
+            _ctx.accounts.rent.to_account_info(),
+        ];
+        msg!("Account Info Assgined");
         let creator = vec![
             mpl_token_metadata::state::Creator {
                 address: creator_key, // Who is Creator ??
@@ -42,16 +52,17 @@ pub mod simple_nft {
                 share: 100,
             },
             mpl_token_metadata::state::Creator {
-                address: _ctx.accounts.mint_authority.key(),
+                // Is diff creator_key ??
+                address: _ctx.accounts.mint_authority.key(), 
                 verified: false,
                 share: 0,
             }
-        ]
+        ];
         msg!("Creator Assigned");
         invoke(
             &create_metadata_accounts_v2(
                 _ctx.accounts.token_metadata_program.key(),
-                _ctx.accounts.metadata.key(),
+                _ctx.accounts.metadata.key(), // what is this ??
                 _ctx.accounts.mint.key(),
                 _ctx.accounts.mint_authority.key(),
                 _ctx.accounts.payer.key(),
@@ -73,28 +84,28 @@ pub mod simple_nft {
 
         // Master Edition 삽입 과정
         let master_edition_infos = vec![
-            ctx.accounts.master_edition.to_account_info(),
-            ctx.accounts.mint.to_account_info(),
-            ctx.accounts.mint_authority.to_account_info(),
-            ctx.accounts.payer.to_account_info(),
+            _ctx.accounts.master_edition.to_account_info(),
+            _ctx.accounts.mint.to_account_info(),
+            _ctx.accounts.mint_authority.to_account_info(),
+            _ctx.accounts.payer.to_account_info(),
             // 방금 메타데이터 계정을 만들었기 때문에 존재할 것임.
-            ctx.accounts.metadata.to_account_info(),
-            ctx.accounts.token_metadata_program.to_account_info(),
-            ctx.accounts.token_program.to_account_info(),
-            ctx.accounts.system_program.to_account_info(),
-            ctx.accounts.rent.to_account_info(),
+            _ctx.accounts.metadata.to_account_info(),
+            _ctx.accounts.token_metadata_program.to_account_info(),
+            _ctx.accounts.token_program.to_account_info(),
+            _ctx.accounts.system_program.to_account_info(),
+            _ctx.accounts.rent.to_account_info(),
         ];
         msg!("Master Edition Account Infos Assigned");
         invoke(
             &create_master_edition_v3(
-                ctx.accounts.token_metadata_program.key(),
-                ctx.accounts.master_edition.key(),
-                ctx.accounts.mint.key(),
+                _ctx.accounts.token_metadata_program.key(),
+                _ctx.accounts.master_edition.key(), // what is this ??
+                _ctx.accounts.mint.key(),
                 // update_authority
-                ctx.accounts.payer.key(),
-                ctx.accounts.mint_authority.key(),
-                ctx.accounts.metadata.key(),
-                ctx.accounts.payer.key(),
+                _ctx.accounts.payer.key(),
+                _ctx.accounts.mint_authority.key(),
+                _ctx.accounts.metadata.key(),
+                _ctx.accounts.payer.key(),
                 Some(0), // max_supply
             ),
             master_edition_infos.as_slice(),

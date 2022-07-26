@@ -11,8 +11,10 @@ anchor-hello-world
 
 check the `Anchor.toml`.
 ```
+$ anchor build
+
 # 동적으로 생성된 키 페어의 퍼블릭키 가져오기
-$ solana address -k ./target/deploy/keypair.json
+$ anchor keys list
 
 # declare_id!() 및 Anchor.toml의 program_id를 갱신.
 
@@ -21,11 +23,6 @@ $ anchor deploy
 
 # Second Shell
 $ solana-test-validator
-```
-
-## Test
-```
-$ anchor test
 ```
 
 
