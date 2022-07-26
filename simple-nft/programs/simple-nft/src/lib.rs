@@ -21,7 +21,7 @@ pub mod simple_nft {
         // SPL Token Mint 과정
         msg!("Initializing Mint NFT");
         let cpi_accounts = MintTo {
-            mint: _ctx.accounts.mint.to_account_info(), // what is this ??
+            mint: _ctx.accounts.mint.to_account_info(),
             to: _ctx.accounts.token_account.to_account_info(),
             authority: _ctx.accounts.payer.to_account_info(),
         };
@@ -47,7 +47,7 @@ pub mod simple_nft {
         msg!("Account Info Assgined");
         let creator = vec![
             mpl_token_metadata::state::Creator {
-                address: creator_key, // Who is Creator ??
+                address: creator_key, // Who is Creator > Example?
                 verified: false, // Why False ??
                 share: 100,
             },
@@ -119,28 +119,45 @@ pub mod simple_nft {
 #[derive(Accounts)]
 pub struct MintNFT<'info> {
     #[account(mut)]
+    // 민팅을 할 권한을 가진 사람: 이 사람이 반드시 민팅을 하지 않을 수도 있음.
     pub mint_authority: Signer<'info>,
     pub system_program: Program<'info, System>,
     pub token_program: Program<'info, Token>,
 
+    // 민트 어카운트(공장)은 미리 생성이 되어 있어야 한다. 
+    // 토큰 프로그램으로 생성할 수 있음 -> 미리 여기서 만들어서 와야 함.
     /// CHECK: This is not dangerous because we don't read or write from this account
     #[account(mut)]
     pub mint: UncheckedAccount<'info>,
+    
+    // 메타데이터 어카운트가 미리 생성되어 있어야 한다.
+    // 토큰 메타데이터 프로그램에서 생성할 수 있음. -> 미리 여기서 만들어서 와야 함.
     /// CHECK: This is not dangerous because we don't read or write from this account
     #[account(mut)]
     pub metadata: UncheckedAccount<'info>,
+    
+    // NFT의 발행자, 돈 내는 사람
     /// CHECK: This is not dangerous because we don't read or write from this account
     #[account(mut)]
     pub payer: AccountInfo<'info>,
+    
+    // 토큰 어카운트
+    // (민트 어카운트) <---(토큰 어카운트)---> (유저 어카운트)
+    // 토큰 어카운트도 미리 만들고 와야 함.
     /// CHECK: This is not dangerous because we don't read or write from this account
     #[account(mut)]
     pub token_account: UncheckedAccount<'info>,
+    
+    // 마스터 에디션 어카운트
+    // 메타플렉스에서 토큰을 만드는 방법을 따라야 함. (기존 솔라나에서 만드는 것과 살짝 다름)
+    // 얘도 토큰 메타데이터 프로그램에서 미리 생성해야 와야 함.
     /// CHECK: This is not dangerous because we don't read or write from this account
     #[account(mut)]
     pub master_edition: UncheckedAccount<'info>,
 
     /// CHECK: This is not dangerous because we don't read or write from this account
     pub token_metadata_program: UncheckedAccount<'info>,
+    
     /// CHECK: This is not dangerous because we don't read or write from this account
     pub rent: AccountInfo<'info>,
 }
