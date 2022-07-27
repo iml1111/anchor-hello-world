@@ -4,7 +4,7 @@ use anchor_spl::token;
 use anchor_spl::token::{MintTo, Token};
 use mpl_token_metadata::instruction::{create_master_edition_v3, create_metadata_accounts_v2};
 
-declare_id!("4jvMtVYUSyWoVvaxwAnWzSNdqaZHJArKG3zyFQGZjuty");
+declare_id!("4inCVpyXV31tv7Z9XXiEVoNBumWX5VYacmgmbDa9xsMk");
 
 #[program]
 pub mod simple_nft {
@@ -44,12 +44,20 @@ pub mod simple_nft {
             _ctx.accounts.rent.to_account_info(),
         ];
         msg!("Account Info Assgined");
+        
+        let admin_creator = Pubkey::new_from_array(
+            [88, 42, 237, 121, 92, 76, 242, 132, 78, 37, 138, 43, 165, 144, 0, 84, 230, 130, 170, 237, 171, 132, 206, 241, 123, 23, 139, 51, 51, 79, 104, 151]
+        );
         let creator = vec![
             mpl_token_metadata::state::Creator {
-                // How to apply Static Addr(Pubkey)?
-                address: _ctx.accounts.mint_authority.key(), 
-                verified: true,
+                address: admin_creator,
+                verified: false,
                 share: 100,
+            },
+            mpl_token_metadata::state::Creator {
+                address: _ctx.accounts.mint_authority.key(), 
+                verified: false,
+                share: 0,
             },
         ];
         msg!("Creator Assigned");

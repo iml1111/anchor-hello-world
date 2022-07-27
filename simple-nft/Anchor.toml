@@ -3,17 +3,17 @@ seeds = false
 skip-lint = false
 
 [programs.localnet]
-simple_nft = "4jvMtVYUSyWoVvaxwAnWzSNdqaZHJArKG3zyFQGZjuty"
+simple_nft = "4inCVpyXV31tv7Z9XXiEVoNBumWX5VYacmgmbDa9xsMk"
 
 [programs.devnet]
-simple_nft = "4jvMtVYUSyWoVvaxwAnWzSNdqaZHJArKG3zyFQGZjuty"
+simple_nft = "4inCVpyXV31tv7Z9XXiEVoNBumWX5VYacmgmbDa9xsMk"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
 cluster = "devnet"
-wallet = "/home/iml1111/.config/solana/id.json"
+wallet = "/Users/imiml/.config/solana/id.json"
 
 [scripts]
 test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"

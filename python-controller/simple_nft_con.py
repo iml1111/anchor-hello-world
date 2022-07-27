@@ -19,16 +19,16 @@ IML1 = [56,148,44,55,92,31,202,61,172,155,168,205,29,201,251,85,44,146,153,130,4
 
 IML2 = [153,31,111,247,54,72,131,173,86,83,147,99,149,19,193,34,33,168,163,54,121,60,212,35,21,169,200,137,215,254,204,147,175,230,136,112,244,175,75,84,120,46,136,90,208,86,228,223,197,166,39,82,73,9,73,198,159,59,242,77,93,38,17,34]
 
-URL = "https://raw.githubusercontent.com/iml1111/iml1111.github.io/main/iml_token.png"
-# Image Print TODO
+URL = "https://raw.githubusercontent.com/iml1111/anchor-hello-world/main/simple-nft/assets/nft.json"
 
 
 def main():
 
     # 토큰 발행자만 실행 가능함
-    user_acc = Keypair.from_secret_key(IML1)
-    token_acc = PublicKey("8FSSobV4pjNceNV44s39b3VRnFTdCGgtTcCgSKSGTwjK")
-    token = PublicKey("E1fnFLsZP6iADPQxeYEKxPLEhGVADGcthuVyQdzLsKhK")
+    #admin_acc = Keypair.from_secret_key(IML1)
+    user_acc = Keypair.from_secret_key(IML2)
+    token_acc = PublicKey("ZdvZJehxbYT3YDmcXDfZMPNtmTQc2U5ETxosetS4hYs")
+    token = PublicKey("6mjne4fXZthWkNpxvjpZp69FauM4wSaY4QAaVQi7K4wP")
     metadata_acc = get_metadata_account(token)
     master_edition_acc = get_edition(token)
     
@@ -41,7 +41,7 @@ def main():
     ix = mint_nft(
         MintNftArgs(
             uri=URL,
-            title="IML NFT",
+            title="IML NFT #1",
             symbol="IMIML",
         ),
         MintNftAccounts(
@@ -69,7 +69,6 @@ def main():
     except RPCException as e:
         error = e.args[0]
         pprint(error)
-
     else:
         print(res)
 

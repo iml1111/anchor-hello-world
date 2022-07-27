@@ -2,23 +2,18 @@ from __future__ import annotations
 import typing
 from solana.publickey import PublicKey
 from solana.transaction import TransactionInstruction, AccountMeta
-from anchorpy.borsh_extension import BorshPubkey
 import borsh_construct as borsh
 from ..program_id import PROGRAM_ID
 
 
 class MintNftArgs(typing.TypedDict):
-    creator_key: PublicKey
     uri: str
     title: str
     symbol: str
 
 
 layout = borsh.CStruct(
-    "creator_key" / BorshPubkey,
-    "uri" / borsh.String,
-    "title" / borsh.String,
-    "symbol" / borsh.String,
+    "uri" / borsh.String, "title" / borsh.String, "symbol" / borsh.String
 )
 
 
@@ -65,7 +60,6 @@ def mint_nft(args: MintNftArgs, accounts: MintNftAccounts) -> TransactionInstruc
     identifier = b"\xd39\x06\xa7\x0f\xdb#\xfb"
     encoded_args = layout.build(
         {
-            "creator_key": args["creator_key"],
             "uri": args["uri"],
             "title": args["title"],
             "symbol": args["symbol"],
