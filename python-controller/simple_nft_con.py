@@ -27,8 +27,8 @@ def main():
 
     # 토큰 발행자만 실행 가능함
     user_acc = Keypair.from_secret_key(IML1)
-    token_acc = PublicKey("8nhf5o82VQo1NSxj6QjUenS72mnGEG7QotrxvzEpeovT")
-    token = PublicKey("Gsqwt9tfYDBix9kq7Uqq4hMREwxb83SjN8Js9H3469rp")
+    token_acc = PublicKey("8FSSobV4pjNceNV44s39b3VRnFTdCGgtTcCgSKSGTwjK")
+    token = PublicKey("E1fnFLsZP6iADPQxeYEKxPLEhGVADGcthuVyQdzLsKhK")
     metadata_acc = get_metadata_account(token)
     master_edition_acc = get_edition(token)
     
@@ -66,7 +66,7 @@ def main():
         wallet=wallet,
     )
     try:
-        res = asyncio.run(provider.send(tx, [iml2]))
+        res = asyncio.run(provider.send(tx, [user_acc]))
     except RPCException as e:
         error = e.args[0]
         pprint(error)

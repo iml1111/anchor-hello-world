@@ -127,6 +127,14 @@ mint: Gsqwt9tfYDBix9kq7Uqq4hMREwxb83SjN8Js9H3469rp (IML token)
 user_account: CqeESEVSgUbjjTw1TLbBq8ZWq5AZy6aE62FPAS4UZC6d (iml2)
 token_account: 8nhf5o82VQo1NSxj6QjUenS72mnGEG7QotrxvzEpeovT (iml2' token account)
 
+# Token 2
+User: 6wAqtFA7Z8ALxSq4j3DMh1wUj6vmCMmoCAKZzXP18pmk
+Token Acc: 8FSSobV4pjNceNV44s39b3VRnFTdCGgtTcCgSKSGTwjK
+Token: E1fnFLsZP6iADPQxeYEKxPLEhGVADGcthuVyQdzLsKhK
+Metdata Acc: FmKjMfg5k5A3kbjJtYY6DRERqmxGfSgCNbYEQ3iAPDmM
+Master Edition Acc: GqtW8D9VGtyby1nPXuhboGDF7s4FeWQ5rkhD4sbM45tg
+3kWZUV71sLWL8nWKVucKM6F5K27aWzhGxiG9TPygiMoBHWS465dSowehpKG3DMdduqtuK2yRMPSUbXPR7LqW1ew7
+
 ```
 
 ### IDL
