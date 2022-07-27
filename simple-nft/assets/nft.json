@@ -1,0 +1,10 @@
+{
+    "name": "IML NFT #1",
+    "symbol": "IMIML",
+    "description": "I'M IML.",
+    "seller_fee_basis_points": 1,
+    "external_url": "https://github.com/iml1111",
+    "edition": "",
+    "background_color": "000000",
+    "image": "https://raw.githubusercontent.com/iml1111/iml1111.github.io/main/iml_token.png"
+}

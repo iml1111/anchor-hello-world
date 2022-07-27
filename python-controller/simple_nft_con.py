@@ -40,7 +40,6 @@ def main():
 
     ix = mint_nft(
         MintNftArgs(
-            creator_key=token, # TODO Creator remove
             uri=URL,
             title="IML NFT",
             symbol="IMIML",

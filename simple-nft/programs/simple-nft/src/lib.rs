@@ -12,7 +12,6 @@ pub mod simple_nft {
 
     pub fn mint_nft(
         _ctx: Context<MintNFT>, 
-        creator_key: Pubkey,
         uri: String, 
         title: String,
         symbol: String,
@@ -47,16 +46,11 @@ pub mod simple_nft {
         msg!("Account Info Assgined");
         let creator = vec![
             mpl_token_metadata::state::Creator {
-                address: creator_key, // Who is Creator > Example?
-                verified: false, // Why False ??
+                // How to apply Static Addr(Pubkey)?
+                address: _ctx.accounts.mint_authority.key(), 
+                verified: true,
                 share: 100,
             },
-            mpl_token_metadata::state::Creator {
-                // Is diff creator_key ??
-                address: _ctx.accounts.mint_authority.key(), 
-                verified: false,
-                share: 0,
-            }
         ];
         msg!("Creator Assigned");
         invoke(
