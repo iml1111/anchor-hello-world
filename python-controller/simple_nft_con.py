@@ -14,7 +14,6 @@ from solana.system_program import SYS_PROGRAM_ID
 from solana.sysvar import SYSVAR_RENT_PUBKEY
 from metaplex.metadata import METADATA_PROGRAM_ID, TOKEN_PROGRAM_ID
 
-
 IML1 = [56,148,44,55,92,31,202,61,172,155,168,205,29,201,251,85,44,146,153,130,45,53,215,32,123,217,163,232,103,25,243,28,88,42,237,121,92,76,242,132,78,37,138,43,165,144,0,84,230,130,170,237,171,132,206,241,123,23,139,51,51,79,104,151]
 
 IML2 = [153,31,111,247,54,72,131,173,86,83,147,99,149,19,193,34,33,168,163,54,121,60,212,35,21,169,200,137,215,254,204,147,175,230,136,112,244,175,75,84,120,46,136,90,208,86,228,223,197,166,39,82,73,9,73,198,159,59,242,77,93,38,17,34]
@@ -75,4 +74,9 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    #main()
+    from spl.token.client import Token
+
+    token: Token = Token.create_mint(decimals=0, ...)
+    token_pubkey = token.pubkey
+    token_acc: PublicKey = token.create_account(owner=...)
